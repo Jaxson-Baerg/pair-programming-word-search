@@ -32,29 +32,11 @@ const wordSearch = (letters, word) => {
                   break;
                 }
             }
-            for (let j = 0; j < word.length; j++) { // Length of inputted word down backwards
-                try {
-                  foundWordDownBack.push(letters[i - j][x - j]);
-                } catch(err) {
-                  break;
-                }
-            }
-            for (let j = 0; j < word.length; j++) { // Length of inputted word up backwards
-                try {
-                  foundWordUpBack.push(letters[i + j][x - j]);
-                } catch(err) {
-                  break;
-                }
-            }
 
-            if (foundWordDown.join("").includes(word)) return true;
+            if (foundWordDown.join("").includes(word) || foundWordDown.join("").includes(word.split("").reverse().join(""))) return true;
             foundWordDown = [];
-            if (foundWordUp.join("").includes(word)) return true;
+            if (foundWordUp.join("").includes(word) || foundWordUp.join("").includes(word.split("").reverse().join(""))) return true;
             foundWordUp = [];
-            if (foundWordDownBack.join("").includes(word)) return true;
-            foundWordDownBack = [];
-            if (foundWordUpBack.join("").includes(word)) return true;
-            foundWordUpBack = [];
         }
     }
 
